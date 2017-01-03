@@ -38,3 +38,8 @@ class DomainRegistrationError(PlinthError):
 class PackageNotInstalledError(PlinthError):
     """Could not complete module setup due to missing package."""
     pass
+
+
+class ModuleError(PlinthError):
+    """Error related to a Plinth module"""
+    pass
