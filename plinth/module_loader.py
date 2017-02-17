@@ -29,7 +29,7 @@ import re
 from plinth import cfg
 from plinth import urls
 from plinth import setup
-from plinth.modules import modules as plinth_modules
+from plinth.apps import apps
 from plinth.signals import pre_module_loading, post_module_loading
 
 logger = logging.getLogger(__name__)
@@ -57,9 +57,8 @@ def load_modules():
                 raise
 
         _include_module_urls(module_import_path, module_name)
-        # TODO: try/catch this once all modules are migrated
-        plinth_modules.instanciate_manager(module_name, modules[module_name])
-
+        # TODO: try/catch this once all apps are migrated
+        apps.instanciate_app(module_name, modules[module_name])
 
     ordered_modules = []
     remaining_modules = dict(modules)  # Make a copy
@@ -80,10 +79,9 @@ def load_modules():
     for module_name in ordered_modules:
         _initialize_module(module_name, modules[module_name])
         loaded_modules[module_name] = modules[module_name]
-        manager = plinth_modules.managers.get(module_name, None)
-        if manager is not None:
-            plinth_modules.initialize_module(module_name)
-
+        app = apps.apps.get(module_name, None)
+        if app is not None:
+            apps.initialize_app(module_name)
 
     post_module_loading.send_robust(sender="module_loader")
 

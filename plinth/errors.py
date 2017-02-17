@@ -40,6 +40,6 @@ class PackageNotInstalledError(PlinthError):
     pass
 
 
-class ModuleError(PlinthError):
-    """Error related to a Plinth module"""
+class AppError(PlinthError):
+    """Error related to a Plinth app"""
     pass
