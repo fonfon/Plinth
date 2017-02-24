@@ -113,3 +113,6 @@ class App(PlinthApp):
             'https://{host}/deluge', check_certificate=False))
 
         return results
+
+class DelugeApp(App):
+    pass

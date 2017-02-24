@@ -28,7 +28,9 @@ from plinth import frontpage
 from plinth import service as service_module
 
 # customize the app if it is different from 'apps.App'
-# default_app = 'MyAppName'
+# only relative paths are allowed.
+# app_class = 'MyAppClass'
+app_class = "apps.DelugeApp"
 
 
 version = 1
